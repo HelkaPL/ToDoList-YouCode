@@ -16,10 +16,10 @@ const renderTasksList = () => {
 	for (const task of tasks) {
 		htmlString += `
 
-        <li>
-        <input type="button" value="&#10004;">
-        <span class="task__text">${task.content}</span>
-        <input type="button" value="&#128465;">
+        <li class="taskList${task.done ? ' taskList--done' : ''}">
+        <input type="button" class="taskList__button taskList__button--add js-addTask" value="&#10004;">
+        <span class="taskList__taskText">${task.content}</span>
+        <input type="button" class="taskList__button taskList__button--remove js-removeTask" value="&#128465;">
         </li>
         `
 	}

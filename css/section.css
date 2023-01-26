@@ -9,5 +9,6 @@
     border-bottom: 3px solid #bbb;
   }
   .section__content {
+    margin: 0;
     padding: 20px;
   }

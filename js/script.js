@@ -1,4 +1,4 @@
-// {
+{
     // Array below include sample tasks
     let tasks = [
         {
@@ -13,9 +13,7 @@
     // End of sample tasks array
     const taskContent = document.querySelector('.taskForm__taskContent')
     let hideDoneTasks = false; // in default show all tasks
-
-    const isAnyUndone = tasks.some(({ done }) => done)
-    
+   
     const addNewTask = (newTaskContent) => {
         tasks = [
             ...tasks,
@@ -79,10 +77,10 @@
     }
 
     const renderExternals = (tasks) => {
-        let externalString ='';
+        let externalString = '';
         if(tasks.length > 0) {
             externalString += `    
-        <button class="externals__button js-hideDoneTask">${hideDoneTasks ? "Pokaż" : "Ukryj"} zakończone</button>
+        <button class="externals__button js-hideDoneTask">${hideDoneTasks ? 'Pokaż' : 'Ukryj'} zakończone</button>
         <button class="js-markAllDone externals__button${tasks.every(({ done }) => done) ? '--disabled " disabled' : ' "'}>Ukończ wszystkie</button>
         `;
         }
@@ -124,22 +122,21 @@
         `
         }
         document.querySelector('.js-tasks').innerHTML = htmlString
-        bindEvents()
-        renderExternals(tasks)
-        bindExternals()
+        bindEvents();
+        renderExternals();
+        bindExternals();
     }
 
     const init = () => {
-        render()
-
+        render();
         const form = document.querySelector('.js-form')
         form.addEventListener('submit', e => {
             e.preventDefault();
             onFormSubmit();
             taskContent.value = '';
             taskContent.focus();
-        })
+        });
     }
 
     init()
-// }
+}

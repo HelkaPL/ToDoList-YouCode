@@ -123,7 +123,7 @@
         }
         document.querySelector('.js-tasks').innerHTML = htmlString
         bindEvents();
-        renderExternals();
+        renderExternals(tasks);
         bindExternals();
     }
 

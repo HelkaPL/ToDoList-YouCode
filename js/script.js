@@ -10,6 +10,22 @@ const tasks = [
 	},
 ]
 // End of sample tasks array
+const taskContent = document.querySelector('.taskForm__taskContent')
+
+const addNewTask = newTaskContent => {
+	tasks.push({
+		content: newTaskContent,
+	})
+	renderTasksList()
+}
+
+const onFormSubmit = () => {
+    const newTaskContent = taskContent.value.trim()
+        if (newTaskContent === '') {
+            return
+        }
+        addNewTask(newTaskContent)
+    }
 
 const renderTasksList = () => {
 	let htmlString = ''
@@ -28,6 +44,14 @@ const renderTasksList = () => {
 
 const init = () => {
     renderTasksList()
+
+    const form = document.querySelector('.js-form')
+	form.addEventListener('submit', e => {
+		e.preventDefault()
+		onFormSubmit()
+		taskContent.value = ''
+		taskContent.focus()
+	})
 }
 
 init()

@@ -18,10 +18,12 @@ const addNewTask = newTaskContent => {
 	})
 	render()
 }
+
 const removeTask = index => {
     tasks.splice(index, 1)
     render()
 }
+
 const toggleTask = index => {
     tasks[index].done = !tasks[index].done
     render()

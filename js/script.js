@@ -18,6 +18,10 @@ const addNewTask = newTaskContent => {
 	})
 	renderTasksList()
 }
+const removeTask = index => {
+    tasks.splice(index, 1)
+    renderTasksList()
+};
 
 const onFormSubmit = () => {
     const newTaskContent = taskContent.value.trim()
@@ -40,6 +44,15 @@ const renderTasksList = () => {
         `
 	}
 	document.querySelector('.js-tasks').innerHTML = htmlString
+
+    const removeButtons = document.querySelectorAll('.js-removeTask')
+        removeButtons.forEach((removeButton, index) => {
+            removeButton.addEventListener("click", () => {
+                removeTask(index);
+            })
+        })
+
+    
 }
 
 const init = () => {

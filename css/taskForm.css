@@ -1,0 +1,24 @@
+.taskForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 20px;
+}
+@media (max-width: 576px) {
+    .taskForm {
+      grid-template-columns: 1fr;
+    }
+}
+.taskForm__taskContent {
+    padding: 10px 10px;
+}
+.taskForm__button {
+    padding: 10px 12px;
+    border: none;
+    color: #fff;
+    background-color: #007f80;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.taskForm__button:hover {
+    background-color: #099;
+}

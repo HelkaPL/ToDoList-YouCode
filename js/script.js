@@ -16,12 +16,16 @@ const addNewTask = newTaskContent => {
 	tasks.push({
 		content: newTaskContent,
 	})
-	renderTasksList()
+	render()
 }
 const removeTask = index => {
     tasks.splice(index, 1)
-    renderTasksList()
-};
+    render()
+}
+const toggleTask = index => {
+    tasks[index].done = !tasks[index].done
+    render()
+}
 
 const onFormSubmit = () => {
     const newTaskContent = taskContent.value.trim()
@@ -30,33 +34,39 @@ const onFormSubmit = () => {
         }
         addNewTask(newTaskContent)
     }
+const bindEvents = () => {
+    const removeButtons = document.querySelectorAll('.js-removeTask')
+    removeButtons.forEach((removeButton, index) => {
+        removeButton.addEventListener("click", () => {
+            removeTask(index);
+        })
+    })
 
-const renderTasksList = () => {
+    const toggleTaskButtons = document.querySelectorAll('.js-toggleTask')
+    toggleTaskButtons.forEach((toggleTaskButton, index) => {
+        toggleTaskButton.addEventListener("click", () => {
+            toggleTask(index);
+        })
+    })
+}
+
+const render = () => {
 	let htmlString = ''
 	for (const task of tasks) {
 		htmlString += `
-
         <li class="taskList${task.done ? ' taskList--done' : ''}">
-        <input type="button" class="taskList__button taskList__button--add js-addTask" value="&#10004;">
+        <input type="button" class="taskList__button taskList__button--add js-toggleTask" value="&#10004;">
         <span class="taskList__taskText">${task.content}</span>
         <input type="button" class="taskList__button taskList__button--remove js-removeTask" value="&#128465;">
         </li>
         `
 	}
 	document.querySelector('.js-tasks').innerHTML = htmlString
-
-    const removeButtons = document.querySelectorAll('.js-removeTask')
-        removeButtons.forEach((removeButton, index) => {
-            removeButton.addEventListener("click", () => {
-                removeTask(index);
-            })
-        })
-
-    
+    bindEvents()    
 }
 
 const init = () => {
-    renderTasksList()
+    render()
 
     const form = document.querySelector('.js-form')
 	form.addEventListener('submit', e => {

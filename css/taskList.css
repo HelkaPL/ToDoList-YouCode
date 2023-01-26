@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    justify-items: center;
     margin: 0;
     padding: 10px;
     list-style: none;
@@ -14,6 +13,8 @@
 }
 
 .taskList__button {
+    width: 40px;
+    height: 40px;
     padding: 10px 12px;
     border: none;
     color: #fff;
@@ -35,7 +36,9 @@
 .taskList__button--remove {
     background-color: #dc143c;
 }
-
+.taskList__taskText {
+    padding: 0 15px;
+}
 .taskList--done .taskList__taskText {
     text-decoration: line-through;
 }

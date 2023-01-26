@@ -1,4 +1,4 @@
-{
+// {
     // Array below include sample tasks
     let tasks = [
         {
@@ -12,7 +12,10 @@
     ]
     // End of sample tasks array
     const taskContent = document.querySelector('.taskForm__taskContent')
+    let hideDoneTasks = false; // in default show all tasks
 
+    const isAnyUndone = tasks.some(({ done }) => done)
+    
     const addNewTask = (newTaskContent) => {
         tasks = [
             ...tasks,
@@ -38,6 +41,19 @@
         render()
     }
 
+    const markAllTaskAsDone = () => {
+        tasks = tasks.map((task) => ({
+            ...task,
+            done: true,
+        }));
+        render()
+    };
+    
+    const toggleShowDoneTasks = () => {
+        hideDoneTasks = !hideDoneTasks;
+        render()
+    }
+
     const onFormSubmit = () => {
         const newTaskContent = taskContent.value.trim()
         if (newTaskContent === '') {
@@ -45,6 +61,7 @@
         }
         addNewTask(newTaskContent)
     }
+
     const bindEvents = () => {
         const removeButtons = document.querySelectorAll('.js-removeTask')
         removeButtons.forEach((removeButton, index) => {
@@ -61,11 +78,37 @@
         })
     }
 
+    const renderExternals = (tasks) => {
+        let externalString ='';
+        if(tasks.length > 0) {
+            externalString += `    
+        <button class="externals__button js-hideDoneTask">${hideDoneTasks ? "Pokaż" : "Ukryj"} zakończone</button>
+        <button class="js-markAllDone externals__button${tasks.every(({ done }) => done) ? '--disabled " disabled' : ' "'}>Ukończ wszystkie</button>
+        `;
+        }
+        document.querySelector(".js-externals").innerHTML = externalString
+    }
+
+    const bindExternals = () => {
+        const markAllDoneButton = document.querySelector('.js-markAllDone')
+        if(markAllDoneButton)
+        markAllDoneButton.addEventListener("click", markAllTaskAsDone)
+        
+        const toggleHideDoneTask = document.querySelector('.js-hideDoneTask')
+        if(toggleHideDoneTask)
+        toggleHideDoneTask.addEventListener("click", toggleShowDoneTasks)
+    }
+
     const render = () => {
         let htmlString = ''
+
         for (const task of tasks) {
             htmlString += `
-        <li class="taskList${task.done ? ' taskList--done' : ''}">
+        <li class="taskList
+            ${task.done ? ' taskList--done' : ''}
+            ${task.done && hideDoneTasks ? ' taskList--hidden' : ''}
+            "
+        >
         <input
           type="button" 
           class="taskList__button taskList__button--add js-toggleTask"
@@ -82,6 +125,8 @@
         }
         document.querySelector('.js-tasks').innerHTML = htmlString
         bindEvents()
+        renderExternals(tasks)
+        bindExternals()
     }
 
     const init = () => {
@@ -97,4 +142,4 @@
     }
 
     init()
-}
+// }

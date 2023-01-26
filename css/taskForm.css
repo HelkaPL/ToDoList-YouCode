@@ -17,8 +17,9 @@
     color: #fff;
     background-color: #007f80;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: transform .3s, background-color .3s;
 }
 .taskForm__button:hover {
     background-color: #099;
+    transform: scale(1.01);
 }

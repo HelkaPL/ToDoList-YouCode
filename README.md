@@ -5,7 +5,8 @@ It's basicly simply version of to do list, where you can add somethink to, and m
 
 ## Demo
 
-You can chceck there -> [ToDoList-YouCode]([https://helkapl.github.io/currency-converter/](https://helkapl.github.io/ToDoList-YouCode/))
+You can chceck there -> [ToDoList-YouCode]([https://helkapl.github.io/ToDoList-YouCode/])
+
 
 That's how it probably work.<br>
 ![ToDoList-youcode Demo](img/CPT2301252205-450x213.gif)

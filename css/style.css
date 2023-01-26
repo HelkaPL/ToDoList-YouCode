@@ -1,16 +1,35 @@
 html {
-    box-sizing: border-box;
-  }
-  *,
-  :after,
-  :before {
-    box-sizing: inherit;
-  }
-  .container {
-    min-width: 310px;
-    max-width: 900px;
-    padding: 20px;
-    margin: 0 auto;
-    background-color: #ddd;
-    font-family: "Montserrat", "Lato", sans-serif;
-  }
+  box-sizing: border-box;
+}
+
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+.container {
+  min-width: 310px;
+  max-width: 900px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #ddd;
+  font-family: "Montserrat", "Lato", sans-serif;
+}
+
+.externals__button {
+  margin: 0;
+  padding: 5px 10px;
+  border: none;
+  color: #007f80;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s
+}
+.externals__button--disabled {
+  color: #909090;
+}
+.externals__button:hover {
+  color: #00cccc;
+}
+
